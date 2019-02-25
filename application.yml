@@ -18,3 +18,16 @@ zuul:
     aigouEmployee.path: /employee/**  # 匹配 /xxx开头的请求映射到user-provider服务上
   ignored-services: "*" #user-provider #忽略直接使用服务名访问  *忽略所有的
   prefix: /aigou   # 访问前缀
+---
+server:
+  port: 8001
+spring:
+  profiles: emp
+  application:
+    name: employee-provider
+eureka:
+  client:
+    service-url:
+      defaultZone: http://www.eureka-7001.com:7001/eureka  #告诉服务提供者要把服务注册到哪儿 #单机环境
+  instance:
+    prefer-ip-address: true #显示客户端真实ip
